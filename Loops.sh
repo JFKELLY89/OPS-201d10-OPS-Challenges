@@ -11,19 +11,24 @@ count=2
 # Basic Syntax
 
 while [ $count -gt 0 ]; do
+
         echo "List of running proccesses"
         ps aux | awk '{print $2, $11}' | column -t
-        read -p "Enter PID of process you want to kill (or 'q' to quit): " pid
+  
+    if [ $count -gt 1 ]; then 
+    read -p "Enter PID of process you want to kill (or 'q' to quit): " pid
+    else
+    read -p "Would you like to kill again? Enter PID of process you want to kill: " pid
+    fi
     
     if [ "$pid" == "q" ]; then
         break
     fi
 
     if [ $count = 1 ]; then
-    echo "What the hell is wrong with you stop killing"
+    echo "What the hell is wrong with you, stop killing"
     break
     fi
-
 
     if [[ "$pid" =~ ^[0-9]+$ ]]; then
         kill "$pid"
