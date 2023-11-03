@@ -19,7 +19,7 @@ if not exist "!destinationPath!\" (
 	echo Error: Destination folder does not exist.
 	goto :eof
 )
-::This conditional checks if the variable "destinationPath" directory exists, if it does not exist it tells the user that the file does not exist
+::This conditional checks if the variable "destinationPath" directory exists, if it does not exist it tells the user that the file does not exist. The command goto :eof in the conditional to goto "end of file" eg close the program if the condition is met
 
 robocopy "!sourcePath!" "!destinationPath!" /E
 :: This line executes the robocopy command, using the user input folder location variables
