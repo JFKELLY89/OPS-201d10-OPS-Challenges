@@ -2,14 +2,14 @@
 
 $End = Get-Date
 $Begin = $End.AddHours(-24)
-Get-EventLog -LogName System -After $Begin -Before $End | Export-csv -Path \Users\Laptop\Desktop\last_24.txt -NoTypeInformation
+Get-EventLog -LogName System -After $Begin -Before $End | Export-csv -Path "$env:USERPROFILE\Desktop\last_24.csv" -NoTypeInformation
 
 :: Output all “error” type events from the System event log to a file on your desktop named errors.txt.
 
-Get-EventLog -LogName System -EntryType Error | Export-csv -Path \Users\Laptop\Desktop\errors.txt -NoTypeInformation
+Get-EventLog -LogName System -EntryType Error | Export-csv -Path "$env:USERPROFILE\Desktop\errors.csv" -NoTypeInformation
 
 :: Print to the screen all events with ID of 16 from the System event log.
-Get-EventLog -LogName System | | Where-Object {$_.EventID -eq 16}
+Get-EventLog -LogName System | Where-Object {$_.EventID -eq 16}
 
 :: Print to the screen the most recent 20 entries from the System event log.
 Get-EventLog -LogName System -ID 16 -Newest 20
