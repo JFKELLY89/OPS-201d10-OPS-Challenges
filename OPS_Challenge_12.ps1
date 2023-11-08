@@ -7,3 +7,5 @@ Select-String -Path C:\Users\Auser\Desktop\network_report.txt -Pattern 'IPV4Addr
 # Remove the network_report.txt when you are finished searching it.
 Remove-Item C:\Users\Auser\Desktop\network_report.txt
 
+# Instead of creating network_report.txt, use piping to store the output in memory and search it there.
+Get-NetIPConfiguration -All | Select-String -Pattern 'IPV4Address'
