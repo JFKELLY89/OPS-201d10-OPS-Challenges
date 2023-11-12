@@ -17,7 +17,7 @@ for ($Note = 1; $Note -le 10; $Note++) {
 }
 
 # Close all instances of Notepad.
-Stop_Process notepad
+Stop_Process -Name "notepad" -Force
 
 # Kill a process by its Process Identification Number. Choose a process whose termination won’t destabilize the system, such as Google Chrome or MS Edge.
 
